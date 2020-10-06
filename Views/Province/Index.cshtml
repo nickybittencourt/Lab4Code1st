@@ -1,0 +1,51 @@
+@model IEnumerable<Lab4.Models.Province>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Provinces";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProvinceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProvinceCode)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvinceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvinceCode)
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProvinceCode">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProvinceCode">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProvinceCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
